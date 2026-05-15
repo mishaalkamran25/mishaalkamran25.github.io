@@ -255,7 +255,25 @@
       flex-direction: row-reverse;
     }
 
-    .hero-text { flex: 1; min-width: 0; }
+    .hero-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+    .hero-metrics {
+      display: flex;
+      gap: 0;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      width: calc(100% + 4rem + 320px);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1s forwards;
+    }
+
+    .metric-item {
+      flex: 1;
+      padding-right: 2rem;
+    }
 
     .hero-photo-wrap {
       flex-shrink: 0;
@@ -387,9 +405,10 @@
       margin-top: 5rem;
       padding-top: 3rem;
       border-top: 1px solid var(--border);
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       opacity: 0;
       animation: fadeUp 0.6s ease 1s forwards;
+      width: 100%;
     }
 
     .metric-item { display: flex; flex-direction: column; gap: 0.2rem; }
@@ -967,6 +986,31 @@
 
     </div><!-- end .hero-text -->
 
+    </div><!-- end .hero-inner -->
+
+    <!-- Metrics bar spans full container width -->
+    <div class="hero-metrics-wrap">
+      <div class="hero-metrics" style="opacity:0; animation: fadeUp 0.6s ease 1s forwards;">
+        <div class="metric-item">
+          <span class="metric-value"><span>$107K</span></span>
+          <span class="metric-label">Cost Savings Identified</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value"><span>96%</span></span>
+          <span class="metric-label">Forecast Accuracy</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value"><span>400</span></span>
+          <span class="metric-label">Man-Hours Recovered</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value"><span>2+</span></span>
+          <span class="metric-label">Years Professional Experience</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-inner" style="display:none;">
       <!-- EDIT: Replace "mishaal-headshot.jpg" with your actual filename -->
       <!-- Place the file in the same folder as index.html -->
       <div class="hero-photo-wrap">
