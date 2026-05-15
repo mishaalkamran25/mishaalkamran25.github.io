@@ -382,14 +382,16 @@
     .btn-ghost:hover { color: var(--text-primary); opacity: 1; }
 
     .hero-metrics {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
+      display: flex;
+      gap: 3rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: nowrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1s forwards;
+      width: 100%;
+    }
 
     .metric-item { display: flex; flex-direction: column; gap: 0.2rem; }
     .metric-value {
@@ -957,6 +959,12 @@
         </a>
       </div>
 
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <span class="metric-value"><span>$107K</span></span>
+          <span class="metric-label">Cost Savings Identified</span>
+        </div>
+
         <div class="metric-item">
           <span class="metric-value"><span>96%</span></span>
           <span class="metric-label">Forecast Accuracy</span>
@@ -974,18 +982,13 @@
       </div>
 
     </div>
-    
+
     <!-- Headshot -->
     <div class="hero-photo-wrap">
       <img src="mishaal-headshot.jpg"
            alt="Mishaal Kamran Hussain" />
     </div>
-  
-  <div class="hero-metrics">
-        <div class="metric-item">
-          <span class="metric-value"><span>$107K</span></span>
-          <span class="metric-label">Cost Savings Identified</span>
-        </div>
+
   </div>
 </section>
   <!-- ============================================================
