@@ -382,15 +382,14 @@
     .btn-ghost:hover { color: var(--text-primary); opacity: 1; }
 
     .hero-metrics {
-  max-width: var(--max-w);
-  margin: 5rem auto 0;
-  padding: 3rem 2rem 0;
+  width: 100%;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
   border-top: 1px solid var(--border);
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  flex-wrap: wrap;
 
   opacity: 0;
   animation: fadeUp 0.6s ease 1s forwards;
@@ -918,13 +917,19 @@
   <!-- ============================================================
        HERO
        ============================================================ -->
-  <!-- ============================================================
+<!-- ============================================================
      HERO
      ============================================================ -->
 <section id="hero">
   <div class="hero-bg"></div>
 
   <div class="hero-inner">
+
+    <!-- Headshot -->
+    <div class="hero-photo-wrap">
+      <img src="mishaal-headshot.jpg"
+           alt="Mishaal Kamran Hussain" />
+    </div>
 
     <div class="hero-text">
 
@@ -962,37 +967,36 @@
         </a>
       </div>
 
-    </div>
+      <!-- Metrics -->
+      <div class="hero-metrics">
 
-    <!-- Headshot -->
-    <div class="hero-photo-wrap">
-      <img src="mishaal-headshot.jpg"
-           alt="Mishaal Kamran Hussain" />
-    </div>
-
-  </div>
-  <div class="hero-metrics">
         <div class="metric-item">
-          <span class="metric-value"><span>$107K</span></span>
+          <span class="metric-value">$107K</span>
           <span class="metric-label">Cost Savings Identified</span>
         </div>
 
         <div class="metric-item">
-          <span class="metric-value"><span>96%</span></span>
+          <span class="metric-value">96%</span>
           <span class="metric-label">Forecast Accuracy</span>
         </div>
 
         <div class="metric-item">
-          <span class="metric-value"><span>400</span></span>
+          <span class="metric-value">400</span>
           <span class="metric-label">Man-Hours Recovered</span>
         </div>
 
         <div class="metric-item">
-          <span class="metric-value"><span>2+</span></span>
+          <span class="metric-value">2+</span>
           <span class="metric-label">Years Professional Experience</span>
         </div>
+
       </div>
+
+    </div>
+
+  </div>
 </section>
+  
   <!-- ============================================================
        ABOUT
        ============================================================ -->
@@ -1383,7 +1387,7 @@
     <div class="container">
       <div class="contact-inner reveal">
         <p class="label">Get in Touch</p>
-        <h2 class="section-title">Let's Connect.</h2>
+        <h2 class="section-title">Let's connect.</h2>
         <p class="section-intro">
           Open to full-time roles in business analytics, financial analytics, FP&amp;A, and analytics consulting.
           Always happy to connect.
