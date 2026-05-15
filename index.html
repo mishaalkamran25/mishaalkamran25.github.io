@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ============================================================
+       EDIT: Page title shown in browser tab
+       ============================================================ -->
+  <title>Mishaal Kamran Hussain | Business & Financial Analyst</title>
+  <meta name="description" content="Business Analyst and Financial Analyst candidate with FP&A experience at The Coca-Cola Company and MS Business Analytics from Purdue University." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — edit colors, fonts, spacing here
+       ============================================================ */
+    :root {
+      --bg:           #0d0e11;
+      --bg-card:      #13151a;
+      --bg-card-alt:  #181b22;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --accent:       #c9a96e;        /* warm gold — change this to retheme the site */
+      --accent-dim:   rgba(201,169,110,0.12);
+      --accent-glow:  rgba(201,169,110,0.25);
+      --text-primary: #e8e6e1;
+      --text-secondary: #9a9590;
+      --text-muted:   #5a5752;
+      --serif:        'DM Serif Display', Georgia, serif;
+      --sans:         'DM Sans', system-ui, sans-serif;
+      --radius:       10px;
+      --radius-lg:    18px;
+      --transition:   0.22s ease;
+      --max-w:        1080px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    a:hover { opacity: 0.75; }
+
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       TYPOGRAPHY SCALE
+       ============================================================ */
+    h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.15; font-weight: 400; }
+
+    .label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-intro {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+       ============================================================ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 6rem 0; }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ============================================================
+       NAV
+       ============================================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,14,17,0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition);
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-primary); opacity: 1; }
+
+    .nav-cta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent) !important;
+      border: 1px solid var(--accent);
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      transition: background var(--transition), color var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--accent); color: var(--bg) !important; opacity: 1 !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text-primary);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0; right: 0;
+      background: rgba(13,14,17,0.97);
+      backdrop-filter: blur(14px);
+      z-index: 99;
+      padding: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; }
+    .mobile-menu a { font-size: 1.1rem; color: var(--text-primary); font-weight: 400; }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* Subtle grid */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+
+    /* Glow orb */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      margin-bottom: 2rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.06;
+      color: var(--text-primary);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.35s forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
+    }
+
+    .role-pill {
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-statement {
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2.8rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.65s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.8s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); color: var(--bg); }
+
+    .btn-ghost {
+      display: inline-block;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: color var(--transition);
+    }
+    .btn-ghost:hover { color: var(--text-primary); opacity: 1; }
+
+    .hero-metrics {
+      display: flex;
+      gap: 3rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1s forwards;
+    }
+
+    .metric-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .metric-value {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .metric-value span { color: var(--accent); }
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       ABOUT
+       ============================================================ */
+    #about { padding: 7rem 0; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-left .section-title { margin-bottom: 1.4rem; }
+
+    .about-text {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .about-text strong { color: var(--text-primary); font-weight: 500; }
+
+    .about-right { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.8rem;
+      transition: border-color var(--transition);
+    }
+    .edu-card:hover { border-color: var(--border-light); }
+
+    .edu-school {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .edu-degree {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .edu-meta {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================================
+       EXPERIENCE
+       ============================================================ */
+    #experience { padding: 7rem 0; }
+
+    .exp-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .exp-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .exp-item:hover { border-color: var(--border-light); }
+
+    .exp-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 2rem 2.4rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .exp-header-left { flex: 1; }
+
+    .exp-company {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .exp-role {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .exp-meta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .exp-period {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .exp-chevron {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-muted);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .exp-item.open .exp-chevron { transform: rotate(180deg); }
+
+    .exp-body {
+      display: none;
+      padding: 0 2.4rem 2.2rem;
+      border-top: 1px solid var(--border);
+    }
+    .exp-item.open .exp-body { display: block; }
+
+    .exp-highlights {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .highlight-chip {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+    }
+    .highlight-chip .metric {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .highlight-chip .desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .exp-bullets {
+      margin-top: 1.4rem;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .exp-bullets li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.65;
+    }
+    .exp-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+    .exp-bullets li strong { color: var(--text-primary); font-weight: 500; }
+
+    /* ============================================================
+       PROJECTS
+       ============================================================ */
+    #projects { padding: 7rem 0; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: rgba(201,169,110,0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-number {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+    }
+
+    .project-metric {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+    .project-metric .val {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+    .project-metric .lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SKILLS
+       ============================================================ */
+    #skills { padding: 7rem 0; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.8rem;
+      transition: border-color var(--transition);
+    }
+    .skill-group:hover { border-color: var(--border-light); }
+
+    .skill-group-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .skill-item {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .skill-item:last-child { border-bottom: none; }
+
+    /* ============================================================
+       RESUME
+       ============================================================ */
+    #resume { padding: 5rem 0; }
+
+    .resume-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .resume-left .label { margin-bottom: 0.8rem; }
+
+    .resume-left h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .resume-left p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 440px;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       CONTACT
+       ============================================================ */
+    #contact { padding: 7rem 0; }
+
+    .contact-inner {
+      max-width: 560px;
+    }
+
+    .contact-inner .section-title { margin-bottom: 0.8rem; }
+    .contact-inner .section-intro { margin-bottom: 2.4rem; }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.6rem;
+      transition: border-color var(--transition), transform var(--transition);
+      color: var(--text-primary);
+    }
+    .contact-link-item:hover {
+      border-color: rgba(201,169,110,0.3);
+      transform: translateX(4px);
+      opacity: 1;
+      color: var(--text-primary);
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 16px; height: 16px; stroke: var(--accent); }
+
+    .contact-link-meta {}
+    .contact-link-type {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.1rem;
+    }
+    .contact-link-value {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+       ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 768px) {
+      section { padding: 4.5rem 0; }
+
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .projects-grid { grid-template-columns: 1fr; }
+
+      .hero-metrics { gap: 1.8rem; }
+
+      .resume-box { flex-direction: column; align-items: flex-start; }
+
+      .exp-header { flex-direction: column; gap: 0.5rem; }
+      .exp-meta { text-align: left; }
+
+      .exp-highlights { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name { font-size: 2.4rem; }
+      .exp-highlights { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav id="navbar">
+    <span class="nav-logo">
+      <!-- EDIT: Your initials or short name for the nav logo -->
+      M<span>.</span>K<span>.</span>H
+    </span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <!-- EDIT: Replace href with your resume file path, e.g. "Mishaal_Hussain_Resume.pdf" -->
+      <li><a href=""C:\Users\misha\OneDrive - purdue.edu\Desktop\Intern Resumes\vegas address\Mishaal Kamran Hussain - Finance Intern MW - Resume.pdf"" target="_blank" class="nav-cta">Resume</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+      <!-- EDIT: Same resume link as above -->
+      <li><a href=""C:\Users\misha\OneDrive - purdue.edu\Desktop\Intern Resumes\vegas address\Mishaal Kamran Hussain - Finance Intern MW - Resume.pdf"" target="_blank">Resume</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+
+      <!-- EDIT: Badge text -->
+      <div class="hero-badge">Open to full-time opportunities &mdash; Dec 2026</div>
+
+      <!-- EDIT: Your name -->
+      <h1 class="hero-name">Mishaal<br>Kamran <em>Hussain</em></h1>
+
+      <!-- EDIT: Target roles — add or remove pills as needed -->
+      <div class="hero-roles">
+        <span class="role-pill">Business Analyst</span>
+        <span class="role-pill">Financial Analyst</span>
+        <span class="role-pill">FP&amp;A Analyst</span>
+        <span class="role-pill">Analytics Consultant</span>
+      </div>
+
+      <!-- EDIT: Positioning statement — keep it concise and human -->
+      <p class="hero-statement">
+        Finance professional turned analytics practitioner. I build the dashboards, models,
+        and forecasting frameworks that help organizations stop guessing and start deciding with confidence.
+      </p>
+
+      <div class="hero-actions">
+        <!-- EDIT: Replace # with your LinkedIn URL -->
+        <a href="https://linkedin.com/in/mishaal-hussain" target="_blank" class="btn-primary">Connect on LinkedIn</a>
+        <a href="#experience" class="btn-ghost">View my work &darr;</a>
+      </div>
+
+      <!-- EDIT: Key career metrics shown below the hero statement -->
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <span class="metric-value"><span>$107K</span></span>
+          <span class="metric-label">Cost Savings Identified</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value"><span>96%</span></span>
+          <span class="metric-label">Forecast Accuracy</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value"><span>400</span></span>
+          <span class="metric-label">Man-Hours Recovered</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value"><span>5+</span></span>
+          <span class="metric-label">Years Finance &amp; Analytics</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-left reveal">
+          <p class="label">Background</p>
+          <h2 class="section-title">Finance roots.<br>Analytics edge.</h2>
+
+          <!-- EDIT: About text — keep it personal and grounded -->
+          <p class="about-text">
+            I started my career in finance — working through financial statements, cost structures, and
+            budget cycles at <strong>The Coca-Cola Company</strong>. That foundation gave me a sharp sense
+            for what numbers actually mean inside a business.
+          </p>
+          <p class="about-text">
+            Now, at <strong>Purdue's Daniels School of Business</strong>, I'm layering advanced analytics
+            on top of that finance instinct. I work across Python, SQL, Power BI, and Azure AI — not to
+            replace business judgment, but to make it faster and more defensible.
+          </p>
+          <p class="about-text">
+            What I care about: building things that get used. Dashboards stakeholders actually open.
+            Forecasts teams actually trust. Analysis that lands in the room where decisions are made.
+          </p>
+        </div>
+
+        <div class="about-right reveal">
+          <!-- EDIT: Education entries -->
+          <div class="edu-card">
+            <div class="edu-school">Purdue University, Daniels School of Business</div>
+            <div class="edu-degree">MS Business Analytics and Information Management</div>
+            <div class="edu-meta">Expected December 2026 &nbsp;&middot;&nbsp; West Lafayette, IN</div>
+          </div>
+
+          <div class="edu-card">
+            <div class="edu-school">Lahore University of Management Sciences (LUMS)</div>
+            <div class="edu-degree">BS Accounting and Finance</div>
+            <div class="edu-meta">Bachelor of Science &nbsp;&middot;&nbsp; Lahore, Pakistan</div>
+          </div>
+
+          <!-- EDIT: Add or remove interest tags as needed -->
+          <div class="edu-card">
+            <div class="edu-school" style="font-size:0.9rem; font-family: var(--sans); font-weight:500; color: var(--text-secondary); margin-bottom: 0.8rem;">Areas of Focus</div>
+            <div class="project-tags">
+              <span class="tag">Financial Modeling</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Business Intelligence</span>
+              <span class="tag">Data Strategy</span>
+              <span class="tag">Variance Analysis</span>
+              <span class="tag">FP&amp;A</span>
+              <span class="tag">Predictive Analytics</span>
+              <span class="tag">Stakeholder Reporting</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- ============================================================
+       EXPERIENCE
+       ============================================================ -->
+  <section id="experience">
+    <div class="container">
+      <div class="reveal">
+        <p class="label">Where I've Worked</p>
+        <h2 class="section-title">Experience</h2>
+        <p class="section-intro">A record of applying analytics and finance to real organizational challenges — not just academic ones.</p>
+      </div>
+
+      <div class="exp-list reveal">
+
+        <!-- ======================================================
+             EXPERIENCE ITEM 1: COCA-COLA
+             EDIT: Company name, role, dates, metrics, and bullets
+             ====================================================== -->
+        <div class="exp-item" id="exp1">
+          <div class="exp-header" onclick="toggleExp('exp1')">
+            <div class="exp-header-left">
+              <div class="exp-company">The Coca-Cola Company</div>
+              <div class="exp-role">FP&amp;A Financial Analyst</div>
+            </div>
+            <div class="exp-meta">
+              <div class="exp-period">Full-Time &nbsp;&middot;&nbsp; Lahore, PK</div>
+            </div>
+            <!-- Chevron icon -->
+            <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+          <div class="exp-body">
+
+            <!-- Key metrics chips — EDIT values and labels -->
+            <div class="exp-highlights">
+              <div class="highlight-chip">
+                <div class="metric">$107K</div>
+                <div class="desc">OPEX cost savings identified through vendor and overhead variance analysis</div>
+              </div>
+              <div class="highlight-chip">
+                <div class="metric">96%</div>
+                <div class="desc">Forecast accuracy achieved on monthly OPEX using driver-based modeling</div>
+              </div>
+              <div class="highlight-chip">
+                <div class="metric">400 hrs</div>
+                <div class="desc">Manual reporting hours recovered via automated Power BI dashboards</div>
+              </div>
+            </div>
+
+            <!-- Bullet points — EDIT descriptions -->
+            <ul class="exp-bullets">
+              <li>Built a centralized <strong>OPEX dashboard in Power BI</strong> integrating SAP and Excel data sources, enabling leadership to track spending in real time and reducing manual reporting burden by 400 man-hours annually.</li>
+              <li>Owned monthly <strong>OPEX forecasting for Pakistan,</strong> using driver-based assumptions, achieving 96% accuracy and reducing late revisions by aligning finance with operational plans.</li>
+              <li>Conducted <strong>variance analysis</strong> across departments, identifying $107K in addressable cost savings through vendor and overhead spend reviews presented to senior stakeholders.</li>
+              <li>Led cross-functional rollout of <strong>Purchase Pal</strong>, an internal procurement tool, coordinating with procurement, IT, and operations teams to drive adoption and capture purchasing data.</li>
+              <li>Supported annual <strong>budgeting and long-range planning</strong> cycles by preparing financial templates, consolidating inputs from business units, and producing executive-ready commentary decks.</li>
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- ======================================================
+             EXPERIENCE ITEM 2: PEPSICO / KEARNEY PRACTICUM
+             EDIT: Company name, role, dates, metrics, and bullets
+             ====================================================== -->
+        <div class="exp-item" id="exp2">
+          <div class="exp-header" onclick="toggleExp('exp2')">
+            <div class="exp-header-left">
+              <div class="exp-company">PepsiCo &times;  Kearney</div>
+              <div class="exp-role">Analytics Practicum — Equipment Performance &amp; Service Intelligence</div>
+            </div>
+            <div class="exp-meta">
+              <div class="exp-period">Graduate Practicum &nbsp;&middot;&nbsp; Purdue University</div>
+            </div>
+            <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+          <div class="exp-body">
+
+            <!-- EDIT metrics for this role -->
+            <div class="exp-highlights">
+              <div class="highlight-chip">
+                <div class="metric">322K</div>
+                <div class="desc">Service comments analyzed using NLP to classify failure types and root causes</div>
+              </div>
+              <div class="highlight-chip">
+                <div class="metric">15K</div>
+                <div class="desc">Post-mix assets scored with a predictive maintenance risk model</div>
+              </div>
+              <div class="highlight-chip">
+                <div class="metric">OEM Bench.</div>
+                <div class="desc">Comparative cost and performance analysis across equipment manufacturers</div>
+              </div>
+            </div>
+
+            <!-- EDIT bullets -->
+            <ul class="exp-bullets">
+              <li>Developed an <strong>equipment performance analytics platform in Power BI</strong> for PepsiCo's Equipment Services subsidiary, visualizing reliability trends, failure frequency, and service cost by asset type and region.</li>
+              <li>Applied <strong>NLP text classification</strong> to 322K+ service work-order comments, surfacing recurring failure patterns and enabling the team to shift from reactive to structured preventive maintenance planning.</li>
+              <li>Built a <strong>predictive asset-scoring model</strong> across 15K assets using maintenance history, age, and usage signals — prioritizing high-risk equipment for preemptive intervention.</li>
+              <li>Conducted <strong>OEM benchmarking analysis</strong> comparing equipment suppliers on service cost, mean-time-to-repair, and failure rate, supporting strategic sourcing decisions with quantified financial impact.</li>
+              <li>Collaborated with Kearney consultants and PepsiCo innovation and operations leads to translate analytical findings into <strong>actionable service cost reduction recommendations</strong> presented to executive stakeholders.</li>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- ============================================================
+       PROJECTS
+       ============================================================ -->
+  <section id="projects">
+    <div class="container">
+      <div class="reveal">
+        <p class="label">Selected Projects</p>
+        <h2 class="section-title">Work I'm proud of.</h2>
+        <p class="section-intro">Each project was built to answer a specific business question — not just to satisfy a rubric.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- ======================================================
+             PROJECT 1: REGIME-AWARE TRADING
+             EDIT: Title, description, tags, metric label/value
+             ====================================================== -->
+        <div class="project-card reveal">
+          <div class="project-number">01</div>
+          <h3 class="project-title">Regime-Aware Trading in Finance</h3>
+          <p class="project-desc">
+            Developed a two-stage machine learning trading framework that combined neural networks with a macro-driven gating model to learn not just what to trade, but when to trust predictions. Improved risk-adjusted performance by dynamically reducing exposure during unreliable market conditions, significantly limiting drawdowns in volatile periods.          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">HMM</span>
+            <span class="tag">Quantitative Finance</span>
+            <span class="tag">Portfolio Optimization</span>
+          </div>
+          <div class="project-metric">
+            <span class="val">63%</span>
+            <span class="lbl">Sharpe ratio improvement over benchmark</span>
+          </div>
+        </div>
+
+        <!-- ======================================================
+             PROJECT 2: AIRBNB HOST RETENTION
+             EDIT: Title, description, tags, metric
+             ====================================================== -->
+        <div class="project-card reveal">
+          <div class="project-number">02</div>
+          <h3 class="project-title">Airbnb Host Retention Modeling</h3>
+          <p class="project-desc">
+            Built a machine learning model to predict Airbnb host churn using listing attributes, response behavior, and review sentiment data. Enabled targeted retention strategies for at-risk hosts, generating a projected $1.73M profit uplift through selective, revenue-weighted interventions.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Classification</span>
+            <span class="tag">Feature Engineering</span>
+            <span class="tag">NLP</span>
+          </div>
+          <div class="project-metric">
+            <span class="val">0.825</span>
+            <span class="lbl">AUC — host churn prediction model</span>
+          </div>
+        </div>
+
+        <!-- ======================================================
+             PROJECT 3: INVESTMENT CONSULTATION / PORTFOLIO OPT.
+             EDIT: Title, description, tags, metric
+             ====================================================== -->
+        <div class="project-card reveal">
+          <div class="project-number">03</div>
+          <h3 class="project-title">Investment Consultation &amp; Portfolio Optimization</h3>
+          <p class="project-desc">
+            Designed a multi-asset investment strategy by analyzing risk-return tradeoffs across 10 asset classes using portfolio optimization and efficient frontier analysis. Built an investment policy statement tailored to client objectives and constructed an optimized PKR 5 million allocation balancing return targets, diversification, and risk exposure.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Financial Modeling</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Python</span>
+            <span class="tag">Portfolio Theory</span>
+          </div>
+          <div class="project-metric">
+            <span class="val">$1.73M</span>
+            <span class="lbl">Projected profit uplift from optimized allocation</span>
+          </div>
+        </div>
+
+        <!-- ======================================================
+             PROJECT 4: ARCADE EXPANSION STRATEGY
+             EDIT: Title, description, tags, metric
+             ====================================================== -->
+        <div class="project-card reveal">
+          <div class="project-number">04</div>
+          <h3 class="project-title">Arcade Expansion Strategy via SQL &amp; SafeGraph</h3>
+          <p class="project-desc">
+            Used geospatial foot traffic data from SafeGraph and SQL-based analysis to identify
+            optimal expansion markets for an arcade entertainment brand. Scored candidate
+            locations by demographic density, competitor proximity, and visit pattern signals —
+            producing a data-backed site selection recommendation with supporting visualizations.
+          </p>
+          <div class="project-tags">
+            <span class="tag">SQL</span>
+            <span class="tag">SafeGraph</span>
+            <span class="tag">Geospatial Analysis</span>
+            <span class="tag">Market Strategy</span>
+          </div>
+          <div class="project-metric">
+            <span class="val">SQL</span>
+            <span class="lbl">Foot traffic &amp; POI data driving site selection</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- ============================================================
+       SKILLS
+       ============================================================ -->
+  <section id="skills">
+    <div class="container">
+      <div class="reveal">
+        <p class="label">Capabilities</p>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-intro">Built across years of finance practice and graduate-level analytics training — not just coursework.</p>
+      </div>
+
+      <!-- EDIT: Add, remove, or rename skill groups and items -->
+      <div class="skills-grid reveal">
+
+        <div class="skill-group">
+          <div class="skill-group-title">Finance</div>
+          <div class="skill-list">
+            <div class="skill-item">Financial Modeling</div>
+            <div class="skill-item">FP&amp;A / Budgeting</div>
+            <div class="skill-item">Forecasting</div>
+            <div class="skill-item">Variance Analysis</div>
+            <div class="skill-item">Cost Management</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Analytics</div>
+          <div class="skill-list">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">SQL</div>
+            <div class="skill-item">Statistical Modeling</div>
+            <div class="skill-item">Predictive Analytics</div>
+            <div class="skill-item">NLP / Text Analytics</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Data Tools</div>
+          <div class="skill-list">
+            <div class="skill-item">Excel / VBA</div>
+            <div class="skill-item">SAP</div>
+            <div class="skill-item">Azure AI</div>
+            <div class="skill-item">Google BigQuery</div>
+            <div class="skill-item">SafeGraph</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Visualization</div>
+          <div class="skill-list">
+            <div class="skill-item">Power BI</div>
+            <div class="skill-item">Tableau</div>
+            <div class="skill-item">Dashboard Design</div>
+            <div class="skill-item">Executive Reporting</div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Business</div>
+          <div class="skill-list">
+            <div class="skill-item">Stakeholder Communication</div>
+            <div class="skill-item">Cross-functional Collaboration</div>
+            <div class="skill-item">Insight Storytelling</div>
+            <div class="skill-item">Process Improvement</div>
+            <div class="skill-item">Consulting Frameworks</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- ============================================================
+       RESUME
+       ============================================================ -->
+  <section id="resume">
+    <div class="container">
+      <div class="resume-box reveal">
+        <div class="resume-left">
+          <p class="label">Download</p>
+          <h2>My Resume</h2>
+          <p>A concise record of experience, education, and impact. One page, no fluff.</p>
+        </div>
+        <!-- EDIT: Update href to your actual resume PDF filename.
+             Place the PDF in the same folder as index.html.
+             Example: href="Mishaal_Hussain_Resume.pdf" -->
+        <a href="Mishaal_Hussain_Resume.pdf" target="_blank" class="btn-primary" download>
+          Download Resume &nbsp;&darr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner reveal">
+        <p class="label">Get in Touch</p>
+        <h2 class="section-title">Let's talk.</h2>
+        <p class="section-intro">
+          Open to full-time roles in business analytics, financial analytics, FP&amp;A, and analytics consulting.
+          Always happy to connect.
+        </p>
+
+        <div class="contact-links">
+
+          <!-- EDIT: Replace with your actual email address -->
+          <a href="mailto:hussain86@purdue.edu" class="contact-link-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <polyline points="2,4 12,13 22,4"/>
+              </svg>
+            </div>
+            <div class="contact-link-meta">
+              <div class="contact-link-type">Email</div>
+              <!-- EDIT: Your email address display text -->
+              <div class="contact-link-value">hussai86@purdue.edu</div>
+            </div>
+          </a>
+
+          <!-- EDIT: Replace with your actual LinkedIn URL -->
+          <a href="https://www.linkedin.com/in/mishaal-kamran-hussain/" target="_blank" class="contact-link-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="4"/>
+                <path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/>
+              </svg>
+            </div>
+            <div class="contact-link-meta">
+              <div class="contact-link-type">LinkedIn</div>
+              <!-- EDIT: Your LinkedIn display handle -->
+              <div class="contact-link-value">linkedin.com/in/mishaal-kamran-hussain</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <!-- EDIT: Update year and name if needed -->
+    <p>&copy; 2025 Mishaal Kamran Hussain &nbsp;&middot;&nbsp; Built for recruiters, not robots.</p>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    // ---- NAV: add scrolled class for border ----
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // ---- MOBILE MENU ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ---- ACCORDION: experience toggle ----
+    function toggleExp(id) {
+      const item = document.getElementById(id);
+      const isOpen = item.classList.contains('open');
+
+      // Close all first
+      document.querySelectorAll('.exp-item').forEach(el => el.classList.remove('open'));
+
+      // Open clicked if it was closed
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Open first experience item by default
+    document.getElementById('exp1').classList.add('open');
+
+    // ---- SCROLL REVEAL ----
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger siblings slightly
+          const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
+          const index = siblings.indexOf(entry.target);
+          entry.target.style.transitionDelay = `${index * 0.08}s`;
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ---- SMOOTH ACTIVE NAV HIGHLIGHT ----
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === `#${current}`
+          ? 'var(--text-primary)'
+          : '';
+      });
+    });
+  </script>
+
+</body>
+</html>
